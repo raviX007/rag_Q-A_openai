@@ -5,7 +5,7 @@ langchain
 langchain-openai
 langchain-core
 langchain-text-splitters
-langchain-community-vectorstores
+langchain-community
 openai
 chromadb
 unicodedata2
