@@ -8,4 +8,5 @@ langchain-text-splitters
 langchain-community
 openai
 chromadb
+langgraph
 unicodedata2
