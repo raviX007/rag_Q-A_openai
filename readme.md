@@ -1,122 +1,114 @@
-# **Retrieval-Augmented Generation (RAG) Q&A System**
+# LangGraph Webpage RAG Assistant
 
-This project implements a **Retrieval-Augmented Generation (RAG)** system to allow users to ask questions about content fetched from web pages. It uses **OpenAI Embeddings** and **FAISS Vector Database** to index and search document chunks, while leveraging **OpenAI GPT models** for generating accurate answers.
+A powerful Retrieval-Augmented Generation (RAG) system that allows users to query webpage content using LangGraph and OpenAI's models. The application extracts content from webpages, processes it using RAG architecture, and provides accurate answers to user questions.
 
----
+## 🔥 Features
 
-## **Table of Contents**
+- 🌐 Dynamic webpage content extraction
+- 📑 Automatic text chunking and processing
+- 🔍 Advanced RAG implementation using LangGraph
+- 💡 Interactive Q&A interface
+- 📊 Context-aware responses
+- 🔄 Real-time processing
+- 📝 Source context display
 
-1. [Features](#features)
-2. [Requirements](#requirements)
-3. [Installation](#installation)
-4. [Usage](#usage)
-5. [Workflow Diagram](#workflow-diagram)
-6. [How It Works](#how-it-works)
-7. [License](#license)
+## 🏗️ Architecture
 
----
+![alt text](<Screenshot 2025-01-06 at 4.51.12 AM.png>)
 
-## **Features**
+## 🛠️ Technical Stack
 
-- 📋 **Web Document Retrieval**: Fetches webpage content and sanitizes it for processing.
-- 🔍 **FAISS Vector Search**: Uses FAISS for fast, efficient similarity search.
-- 📊 **OpenAI Embeddings**: Converts document chunks into embeddings using OpenAI's `text-embedding-3-large` model.
-- 🧠 **Q&A with GPT-4**: Generates answers with OpenAI GPT-4.
-- ⚙️ **Interactive UI**: Built with **Streamlit** for an intuitive user experience.
-- 🔑 **Configurable API Key**: Enter OpenAI API keys securely via the app interface.
+- **LangGraph**: Core RAG functionality
+- **OpenAI**: LLM and embeddings
+- **Streamlit**: Web interface
+- **BeautifulSoup**: Web scraping
+- **LangChain**: Document processing
 
----
+## 📦 Installation
 
-## **Requirements**
+1. Clone the repository:
 
-Ensure you have the following dependencies installed:
+```bash
+git clone https://github.com/ravix007/langgraph-webpage-rag.git
+cd langgraph-webpage-rag
+```
 
-- **Python 3.8+**
-- **Streamlit**
-- **Requests**
-- **BeautifulSoup4**
-- **LangChain**
-- **LangGraph**
-- **FAISS**
-- **OpenAI SDK**
+2. Install dependencies:
 
----
+```bash
+pip install -r requirements.txt
+```
 
-## **Installation**
+3. Create requirements.txt with:
 
-1. **Clone the repository**:
+```
+streamlit
+beautifulsoup4
+langchain
+langgraph
+openai
+requests
+```
 
-   ```bash
-   git clone https://github.com/raviX007/rag_Q-A_openai.git
-   cd rag_Q-A_openai
-   ```
+## 🔑 Configuration
 
-2. **Create a virtual environment and activate it**:
+You'll need:
 
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   ```
+- OpenAI API key
+- Web page URL to process
 
-3. **Install dependencies**:
+## 🚀 Usage
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+1. Start the application:
 
-4. **Run the Streamlit app**:
+```bash
+streamlit run app.py
+```
 
-   ```bash
-   streamlit run app.py
-   ```
+2. In the web interface:
+   - Enter your OpenAI API key
+   - Provide webpage URL
+   - Initialize the RAG system
+   - Start asking questions!
 
----
+## 🔍 Core Components
 
-## **Usage**
+### Webpage Processing
 
-1. Start the Streamlit app.
-2. Enter your **OpenAI API key** in the sidebar.
-3. Provide a **URL** to fetch document content.
-4. Initialize the **RAG system** by clicking the **"Initialize RAG System"** button.
-5. Enter your question about the document in the input box.
-6. View the generated answers and retrieved context snippets.
+- Content extraction using BeautifulSoup
+- Text sanitization
+- Unicode handling
 
----
+### RAG Implementation
 
-## **Project Structure**
+- Document chunking
+- Vector storage
+- Similarity search
+- Context retrieval
 
-The project follows a clean and modular structure:
+### LangGraph Pipeline
+
+- State management
+- Sequential processing
+- Context-aware generation
+
+## 📊 Project Structure
+
+```
+langgraph-webpage-rag/
+├── app.py              # Main application
+├── requirements.txt    # Dependencies
+├── README.md          # Documentation
+└── .gitignore         # Git ignore file
+```
+
+## ⚠️ Limitations
+
+- Requires OpenAI API key
+- Web page must be accessible
+- Processing time varies with content length
+- Memory-based vector store (not persistent)
+
+## Screenshot of working application
 
 ![alt text](image.png)
-
----
-
-## **How It Works**
-
-### 1. **Document Retrieval**
-
-- Fetch webpage content using `requests` and parse it with **BeautifulSoup**.
-- Remove unnecessary HTML artifacts and sanitize the text.
-
-### 2. **Text Processing**
-
-- Split the document into smaller chunks using **LangChain**'s `RecursiveCharacterTextSplitter`.
-
-### 3. **Vector Embeddings**
-
-- Use **OpenAI Embeddings** (`text-embedding-3-large`) to convert chunks into vector representations.
-
-### 4. **Vector Store (FAISS)**
-
-- Store the vectorized chunks in **FAISS** for efficient similarity search.
-
-### 5. **Retrieval-Augmented Generation**
-
-- Perform similarity search on the FAISS vector store to retrieve the most relevant document chunks.
-- Pass the retrieved context and user question to **OpenAI GPT-4** for answer generation.
-
-### 6. **Interactive Q&A**
-
-- Users can input questions, view answers, and see retrieved document snippets via the **Streamlit** UI.
-
----
